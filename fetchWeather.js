@@ -16,3 +16,15 @@ async function checkWeather(City){
 searchButton.addEventListener("click", ()=>{
     checkWeather(searchBox.value)
 })
+
+class Weather{
+    constructor(){
+        this.name = ""
+        this.temperatureC = 0;
+        this.temperatureF = 0;
+        this.humidity = 0;
+        this.wind = 0;
+        this.windDirection = ""
+    }
+
+}
