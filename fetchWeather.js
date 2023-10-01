@@ -8,9 +8,9 @@ async function checkWeather(City){
     var data = await response.json();
 
     document.querySelector(".city").innerHTML = data.location.name;
-    document.querySelector(".temp").innerHTML = Math.round(data.current.temp_c) + " C";
-    document.querySelector(".humidity").innerHTML = data.current.humidity + " Humids (idk what humidity is measured in)";
-    document.querySelector(".wind").innerHTML = data.current.wind_kph + " Kph " + data.current.wind_dir;
+    document.querySelector(".temp").innerHTML = Math.round(data.current.temp_f) + " F";
+    document.querySelector(".humidity").innerHTML = data.current.humidity + "%";
+    document.querySelector(".wind").innerHTML = data.current.wind_mph + " mph " + data.current.wind_dir;
 }
 
 searchButton.addEventListener("click", ()=>{
