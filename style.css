@@ -1,8 +1,11 @@
+
+.projectTitle{
+    text-align: center;
+}
+
 body{
     background-color: rgb(118, 214, 255);
 }
-
-
 .city{
     border-width: 10px;
     border-color: (12,12,12)
