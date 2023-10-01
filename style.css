@@ -2,6 +2,13 @@
 .projectTitle{
     text-align: center;
 }
+#wrapper
+{
+	height: 100%;
+	min-height: 120vh;
+	width: 100%;
+	background-image: linear-gradient(white, rgb(118, 214, 255));
+}
 
 body{
     background-color: rgb(118, 214, 255);
