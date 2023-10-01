@@ -1,16 +1,18 @@
 ﻿# WeatherMachine
 
-This project is a...
+This project is a weather application that allows the user to search for a city. The app will be designed so the user can compare multiple cities at once. The app will display the current weather and some other information. The app will have a simple and detailed mode.
 
 ## Features:
-- Feature 1
+- Search for a city
 - Feature 2
 - Feature 3
 
 ## More
+At the moment the app will be hosted locally on the users machine. The app uses [weatherapi](https://www.weatherapi.com/) to get the weather data. 
 
 ## Installation Instructions:
-- Clone repo or...
+- Clone repo 
+- 
 
 ## Checklist
 - [x] Step 1
