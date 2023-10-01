@@ -1,8 +1,28 @@
+
+.projectTitle{
+    text-align: center;
+    font-size: 30px;
+    font-weight: bold;
+    padding-top: 20px;
+    padding-bottom: 20px;
+}
+
+.projectDescription{
+    text-align: center;
+    font-size: 17px;
+}
+
+#wrapper
+{
+	height: 100%;
+	min-height: 120vh;
+	width: 100%;
+	background-image: linear-gradient(white, rgb(118, 214, 255));
+}
+
 body{
     background-color: rgb(118, 214, 255);
 }
-
-
 .city{
     border-width: 10px;
     border-color: (12,12,12)
