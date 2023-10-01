@@ -1,10 +1,36 @@
+body{
+    background-color: rgb(118, 214, 255);
+}
+
+
 .city{
     border-width: 10px;
     border-color: (12,12,12)
 }
 .searchButton{
     width: 25px;
+    border-width: 1px;
 }
 .rainButton{
     width: 25px;
+    border-width: 1px;
+}
+.windButton{
+    width: 25px;
+    border-width: 1px;
+}
+.humidityButton{
+    width: 25px;
+}
+.city{
+    float:left;
+    border-width: 1px;
+}
+.wind{
+    float:left;
+    border-width: 1px;
+}
+.humidity{
+    float:left;
+    border-width: 1px;
 }
