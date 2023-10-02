@@ -56,3 +56,30 @@ body{
     float:left;
     border-width: 1px;
 }
+
+.LocationTile{
+    border-style: groove;
+    border-width: 4px;
+    border-color: cornflowerblue;
+    background-image: linear-gradient(lightblue, rgb(72, 130, 154));
+    float: center;
+    margin-top: 10px;
+}
+
+.attribute{
+    border-style: solid;
+    border-width: 1px;
+    border-color: black;
+    padding-top: 0px;
+    padding-bottom: 0px;
+    margin-top: 0px;
+    margin-bottom: 0px;
+    font-weight: bold;
+    text-align:center;
+}
+
+#queue{
+    border-style:solid;
+    border-color:silver;
+    border-width: 5px;
+}

@@ -129,7 +129,6 @@ function displayList(){
     console.log(TileList.length);
     for(let i = 0; i < TileList.length; i++){
         //create a new <div> element with class "LocationTile" and put it in the "Queue" HTML element
-        console.log("tile: " + TileList[i].name)
         const newTile =document.createElement("div");
         //add the "LocationTile" Class to it. 
         newTile.classList.add("LocationTile");
@@ -138,6 +137,8 @@ function displayList(){
             //'attribute' is the name of the attribute, TileList[i][attribute] is the value of it
             text = attribute + " : " + TileList[i][attribute];
             newNode = document.createTextNode(text);
+            //add the 'attribute' class to it
+            newAttribute.classList.add("attribute");
             newAttribute.appendChild(newNode)
             newTile.appendChild(newAttribute)
         }
