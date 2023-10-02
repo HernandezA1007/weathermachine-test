@@ -96,39 +96,37 @@ async function checkWeather(City){
 showButton.addEventListener("click", ()=>{
     displayList();
 })
-/*This event listener will add a location to the tile list as soon as it can,
- adding the locations data.*/
+
+/*This event listener will add a location to the tile list,
+ adding the locations data. It is bound to hitting the search
+ button. 
+ NOTICE: CLICKING THE SEARCH BUTTON AUTOMATICALLY ADDS THE 
+ LOCATION TO THE QUEUE*/
 searchButton.addEventListener("click", ()=>{
-    //create a new Weather object, then assign all the attributes
     checkWeather(searchBox.value)
 })
 
+//Display list has a check at the beginning of it that examines the current size of TileList
+//If it is empty, it will remove locations from the queue until it is empty. 
+//This listener is bound to the button that reads: "Cast them into the Fire"
 clearButton.addEventListener("click", ()=>{
+    //TileList is set to an empty list. THis is because displayList will look at the 
+    //size of the list to determine it's next step.
     TileList = [];
+    //then displaylist is run, removing locations
     displayList();
 })
-/*
-tempSwitch.addEventListener("click", ()=>{
-    //For now, use a conversion formula to convert the temperature into 
-    //The Opposite temperature
-    text = document.querySelector(".FCswitch").innerHTML
-    let matches = text.match(/(\d+)/);
-    let conversion = 0;
-    if(text.includes("F")){
-        conversion = (5/9) * (Number(matches[0]) - 32)
-        console.log("conversion: " + conversion)
-        document.querySelector(".FCswitch").innerHTML = String(Math.round(conversion)) + " C";
-    }
-    else if(text.includes("C")){
-        conversion = (9/5 * Number(matches[0]) + 32)
-        document.querySelector(".FCswitch").innerHTML = String(Math.round(conversion)) + " F";
-    }
-})
+
+
+/*displayList will display the current TileList. 
+NOTICE: AT THE VERY BEGINNING OF THIS METHOD, IT CHECKS THE SIZE OF TILELIST.
+IF IT IS 0, IT WILL AUTOMATICALLY DELETE ALL THE TIMES IN THE QUEUE WHEN IT IS 
+RUN. 
 */
-
-
 function displayList(){
     const queue = document.getElementById("queue");
+
+    //if the list is empty, remove elements until the queue is empty
     if(TileList.length == 0){
         //remove all locations from the queue:
         const retrieved = document.getElementsByClassName("LocationTile");
@@ -137,23 +135,38 @@ function displayList(){
         }
         return;
     }
+
+    //for every tile in the tile list, create a new <div> element. Then, under that
+    //<div> element, add a <p> element that holds each attribute for this weather item. 
     for(let i = 0; i < TileList.length; i++){
         //create a new <div> element with class "LocationTile" and put it in the "Queue" HTML element
         const newTile =document.createElement("div");
         //add the "LocationTile" Class to it. 
         newTile.classList.add("LocationTile");
         for (attribute in TileList[i]){
+            //for each attribute, create a <p> element and add it to the <div> element
             const newAttribute = document.createElement("p");
             //'attribute' is the name of the attribute, TileList[i][attribute] is the value of it
             text = attribute + " : " + TileList[i][attribute];
+            //In order to create new HTML and add it to the document, they have to first take the form
+            //of a node. That is created below 
             newNode = document.createTextNode(text);
             //add the 'attribute' class to it
             newAttribute.classList.add("attribute");
+            //then append this new Node to the attribute that we created
             newAttribute.appendChild(newNode)
+            //then append that new attribute Element up to the created Tile
             newTile.appendChild(newAttribute)
         }
-        
+        //finally, append the new Tile into the queue. This tile contains all of the data from the 
+        //dataframe, with /undefined/ anywhere that nothing was found in the Database
         queue.appendChild(newTile);
+
+        /*As an addendum, this looks really complicated. the reason i have a <p> in a <div> is because the 
+        original formatting set is as a super long string. adding \n to the end of the attributes wouldn't
+        fix it either. this seems to make it look better, and potentially allows us to manipulate the data 
+        easier as each element is now targetable via the "attribute" class. 
+        */
     }
 }
 class Weather{
@@ -196,6 +209,10 @@ class Weather{
         this.gustKph = 0;
     }
     /**
+     * THIS IS NOT CODE, THIS IS THE OUTPUT FROM A TEST RUN OF POLLING THE DATABASE, FORMATTED. 
+     * I USED THIS AS A BASE FOR DETERMINING WHAT THE ATTRIBUTES WERE TO BE IN THE CLASS AND 
+     * THE SETTERS IN checkWeather()
+     * 
      * {"location":{
      *     "name":"Hays",
      *     "region":"Kansas",
