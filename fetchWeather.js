@@ -4,6 +4,7 @@ const searchBox = document.querySelector(".search input")
 const searchButton = document.querySelector(".search button")
 const tempSwitch = document.querySelector(".FCswitch")
 const showButton = document.querySelector(".show-er")
+const clearButton = document.querySelector(".clear-er")
 /* searchKey can either be a zip code or City, State*/
 
 /*This tile list is the main list for all of the locatuon tiles.
@@ -102,7 +103,10 @@ searchButton.addEventListener("click", ()=>{
     checkWeather(searchBox.value)
 })
 
-
+clearButton.addEventListener("click", ()=>{
+    TileList = [];
+    displayList();
+})
 /*
 tempSwitch.addEventListener("click", ()=>{
     //For now, use a conversion formula to convert the temperature into 
@@ -125,8 +129,14 @@ tempSwitch.addEventListener("click", ()=>{
 
 function displayList(){
     const queue = document.getElementById("queue");
-    console.log("type of TileLise Entry 1: " + typeof(TileList[0]))
-    console.log(TileList.length);
+    if(TileList.length == 0){
+        //remove all locations from the queue:
+        const retrieved = document.getElementsByClassName("LocationTile");
+        for(let i = 0; i < retrieved.length; i++){
+            queue.removeChild(retrieved[i]);
+        }
+        return;
+    }
     for(let i = 0; i < TileList.length; i++){
         //create a new <div> element with class "LocationTile" and put it in the "Queue" HTML element
         const newTile =document.createElement("div");
