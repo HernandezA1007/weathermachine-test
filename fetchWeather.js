@@ -126,10 +126,15 @@ RUN.
 function displayList(){
     const queue = document.getElementById("queue");
 
-    //if the list is empty, remove elements until the queue is empty
+    //if the list is empty(It will be set to that when the "Clear" button is pressed),
+    //remove elements until the queue is empty
+    //FIXME: Currently this only removes "Half" of the list... ?
     if(TileList.length == 0){
         //remove all locations from the queue:
+        //First, select all elements with the class name"LocationTile"
+        //This makes retrieved a list of HTML Location Tags
         const retrieved = document.getElementsByClassName("LocationTile");
+        //for every element in that list, remove it from "queue"
         for(let i = 0; i < retrieved.length; i++){
             queue.removeChild(retrieved[i]);
         }
@@ -183,6 +188,7 @@ class Weather{
         this.lastUpdatedLocalTime = "";
         this.temperatureC = 0;
         this.temperatureF = 0;
+        //look at this to determine whether it is day or not
         this.isDay = 0;
         // look at this to show a related weather Icon
         this.condition = "";
@@ -191,6 +197,7 @@ class Weather{
         this.windKPH = 0;
         this.windDegree = 0;
         this.windDirection = '';
+        //look at this to determine whether its windy or nah
         this.wind = 0;
         this.windDirection = "";
         this.tempButton;
@@ -199,10 +206,12 @@ class Weather{
         this.precipMm = 0;
         this.precipIn = 0;
         this.humidity = 0;
+        //this can be used to determine if it is cloudy or not
         this.cloud = 0;
         this.feelsLikeC = 0;
         this.feelsLikeF= 0;
         this.visibilityKM = 0;
+        //this attribute seems bugged out. it usually displays as undefined
         this.visibilityMi = 0;
         this.UV = 0;
         this.gustMph = 0;
