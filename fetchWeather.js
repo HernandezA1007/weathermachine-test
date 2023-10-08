@@ -1,12 +1,15 @@
 const apiURL = "http://api.weatherapi.com/v1/current.json?key=bfaf6f3581b14ed88fc233827231009&q=";
 //http://api.weatherapi.com/v1/current.json?key=bfaf6f3581b14ed88fc233827231009&q=67601&aqi=no
+
+//The input box for the search
 const searchBox = document.querySelector(".search input")
+//the button the user pusher to search after they have entered a location
 const searchButton = document.querySelector(".search button")
+//the button to switch the temperature for Celsius to fahrenheit
 const tempSwitch = document.querySelector(".FCswitch")
-const showButton = document.querySelector(".show-er")
+//the button to clear the screen of all locations
 const clearButton = document.querySelector(".clear-er")
 /* searchKey can either be a zip code or City, State*/
-
 /*This tile list is the main list for all of the location tiles.
 locations should be added to and taken away from this directly*/
 let TileList = [];
