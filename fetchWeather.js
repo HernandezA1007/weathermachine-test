@@ -7,7 +7,7 @@ const showButton = document.querySelector(".show-er")
 const clearButton = document.querySelector(".clear-er")
 /* searchKey can either be a zip code or City, State*/
 
-/*This tile list is the main list for all of the locatuon tiles.
+/*This tile list is the main list for all of the location tiles.
 locations should be added to and taken away from this directly*/
 let TileList = [];
 
@@ -89,13 +89,8 @@ async function checkWeather(City){
 
     //Having collected all of this information, return it.
     TileList.push(tempLocation)
-}
-
-//this is a temporary measure. clicking this should display all the currently 
-//queued locations
-showButton.addEventListener("click", ()=>{
     displayList();
-})
+}
 
 /*This event listener will add a location to the tile list,
  adding the locations data. It is bound to hitting the search
@@ -105,7 +100,6 @@ showButton.addEventListener("click", ()=>{
 searchButton.addEventListener("click", ()=>{
     checkWeather(searchBox.value)
 })
-
 //Display list has a check at the beginning of it that examines the current size of TileList
 //If it is empty, it will remove locations from the queue until it is empty. 
 //This listener is bound to the button that reads: "Cast them into the Fire"
@@ -116,13 +110,10 @@ clearButton.addEventListener("click", ()=>{
     //then displaylist is run, removing locations
     displayList();
 })
-
-
 /*displayList will display the current TileList. 
 NOTICE: AT THE VERY BEGINNING OF THIS METHOD, IT CHECKS THE SIZE OF TILELIST.
 IF IT IS 0, IT WILL AUTOMATICALLY DELETE ALL THE TIMES IN THE QUEUE WHEN IT IS 
-RUN. 
-*/
+RUN. */
 function displayList(){
     const queue = document.getElementById("queue");
 
