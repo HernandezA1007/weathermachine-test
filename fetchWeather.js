@@ -1,5 +1,6 @@
-const apiURL = "http://api.weatherapi.com/v1/current.json?key=bfaf6f3581b14ed88fc233827231009&q=";
+const apiURL = "http://api.weatherapi.com/v1/current.json?key=03ee7347933d49ac83945128231409&q=";
 //http://api.weatherapi.com/v1/current.json?key=bfaf6f3581b14ed88fc233827231009&q=67601&aqi=no
+
 
 //The input box for the search
 const searchBox = document.querySelector(".search input")
@@ -9,10 +10,27 @@ const searchButton = document.querySelector(".search button")
 const tempSwitch = document.querySelector(".FCswitch")
 //the button to clear the screen of all locations
 const clearButton = document.querySelector(".clear-er")
+//the button to allow the user to filter results
+const filterButton = document.querySelector(".filter-er")
+//the error message(if relevant)
+const errorMessage = document.querySelector(".error-message")
 /* searchKey can either be a zip code or City, State*/
+
+/*This is where the Settings can be defined as variables*/
+
+
 /*This tile list is the main list for all of the location tiles.
 locations should be added to and taken away from this directly*/
 let TileList = [];
+
+
+//ShowList is an array whose length is the same as the number of 
+//attributes returned by the API. It will be an array of 
+//Booleans, where each index corresponds to an attribute.
+//setting an index to false means that the correcponding attribute
+//will not be shown 
+let ShowList = new Array(34);
+
 
 //This function will take in a location to search for.
  //It will go the the API and return the information, distilling it
@@ -20,9 +38,21 @@ let TileList = [];
 //add that object to the TileList
 async function checkWeather(City){
     let tempLocation = new Weather();
-    const response = await fetch(apiURL + City + "&aqi=no");
-    var data = await response.json();
-
+    try{
+        const response = await fetch(apiURL + City + "&aqi=no");
+        if(response.status == 404 || response.status == 400 && response.status != 200){
+            throw Error(name = "Invalid Location", message = "Server responded with an error")
+        }
+        var data = await response.json();
+        errorMessage.innerHTML = null;
+    }
+    catch(error){
+        console.log(`${error.name}! ${error.message}`)
+        errorMessage.innerHTML = ("Request cannot be processed")
+        return
+    }
+       
+ 
     //The name of the location
     tempLocation.name = data.location.name;
     //The region (In the US, this is the state)
@@ -95,6 +125,7 @@ async function checkWeather(City){
     displayList();
 }
 
+
 /*This event listener will add a location to the tile list,
  adding the locations data. It is bound to hitting the search
  button. 
@@ -103,6 +134,8 @@ async function checkWeather(City){
 searchButton.addEventListener("click", ()=>{
     checkWeather(searchBox.value)
 })
+
+
 //Display list has a check at the beginning of it that examines the current size of TileList
 //If it is empty, it will remove locations from the queue until it is empty. 
 //This listener is bound to the button that reads: "Cast them into the Fire"
@@ -113,6 +146,19 @@ clearButton.addEventListener("click", ()=>{
     //then displaylist is run, removing locations
     displayList();
 })
+
+
+filterButton.addEventListener("click", ()=>{
+    //when the button is clicked, I want to generate a checklist of all the attributes.
+    let list = document.createElement("form")
+
+    let option = document.createElement("input")
+    //allow the user to select the data they want to show
+    list.append(option)
+    //then update the list to show this data
+})
+
+
 /*displayList will display the current TileList. 
 NOTICE: AT THE VERY BEGINNING OF THIS METHOD, IT CHECKS THE SIZE OF TILELIST.
 IF IT IS 0, IT WILL AUTOMATICALLY DELETE ALL THE TIMES IN THE QUEUE WHEN IT IS 
@@ -129,15 +175,15 @@ function displayList(){
         //This makes retrieved a list of HTML Location Tags
         const retrieved = document.getElementsByClassName("LocationTile");
         //for every element in that list, remove it from "queue"
-        for(let i = 0; i < retrieved.length; i++){
-            queue.removeChild(retrieved[i]);
+        while(queue.hasChildNodes()){
+            queue.removeChild(queue.firstChild);
         }
         return;
     }
 
     //for every tile in the tile list, create a new <div> element. Then, under that
     //<div> element, add a <p> element that holds each attribute for this weather item. 
-    for(let i = 0; i < TileList.length; i++){
+    let i = TileList.length - 1;
         //create a new <div> element with class "LocationTile" and put it in the "Queue" HTML element
         const newTile =document.createElement("div");
         //add the "LocationTile" Class to it. 
@@ -146,7 +192,8 @@ function displayList(){
             //for each attribute, create a <p> element and add it to the <div> element
             const newAttribute = document.createElement("p");
             //'attribute' is the name of the attribute, TileList[i][attribute] is the value of it
-            text = attribute + " : " + TileList[i][attribute];
+            //to make it look nicer, I am capitalizing the first letter of each attribute. 
+            text = attribute.charAt(0).toUpperCase() + attribute.slice(1) + " : " + TileList[i][attribute];
             //In order to create new HTML and add it to the document, they have to first take the form
             //of a node. That is created below 
             newNode = document.createTextNode(text);
@@ -167,7 +214,8 @@ function displayList(){
         easier as each element is now targetable via the "attribute" class. 
         */
     }
-}
+
+
 class Weather{
     constructor(){
         this.name = "";
@@ -190,7 +238,6 @@ class Weather{
         this.windMPH = 0;
         this.windKPH = 0;
         this.windDegree = 0;
-        this.windDirection = '';
         //look at this to determine whether its windy or nah
         this.wind = 0;
         this.windDirection = "";
@@ -211,6 +258,8 @@ class Weather{
         this.gustMph = 0;
         this.gustKph = 0;
     }
+
+
     /**
      * THIS IS NOT CODE, THIS IS THE OUTPUT FROM A TEST RUN OF POLLING THE DATABASE, FORMATTED. 
      * I USED THIS AS A BASE FOR DETERMINING WHAT THE ATTRIBUTES WERE TO BE IN THE CLASS AND 
@@ -255,5 +304,4 @@ class Weather{
      *     "gust_mph":26.0,
      *     "gust_kph":41.8}}
      */
-
 }

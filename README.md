@@ -1,24 +1,40 @@
 ﻿# WeatherMachine
 
-This project is a weather application that allows the user to search for a city. The app will be designed so the user can compare multiple cities at once. The app will display the current weather and some other information. The app will have a simple and detailed mode.
+
+# About the Project
+WeatherMachine is a weather application that allows users to fetch and compare weather conditions of multiple cities simultaneously. The app will display the current weather insights and some other information by toggling between simple and detailed views.
 
 ## Features:
-- Search for a city
-- Feature 2
-- Feature 3
+- Dynamic City Search: Fetch weather details of a city
+- Compative Analysis: Compare the weather conditions of multiple cities simultaneously
+- Versatile Viewing Modes: Switch between a simple or detailed mode or toggle desired attributes
+- Local Hosting: Currently optimized for local hosting to ensure rapid development
+- ...
 
-## More
+## Data Source / Built with ?
 At the moment the app will be hosted locally on the users machine. The app uses [weatherapi](https://www.weatherapi.com/) to get the weather data. 
 
-## Installation Instructions:
-- Clone repo 
-- 
+## Setup and Installation
+- Clone the repository to your local machine.
+`git clone [https://github.com/EtherealManifest/WeatherMachine]`
+- to be continued...
+- Getting starded ?
 
-## Checklist
-- [x] Step 1
-- [ ] Step 2
-- [ ] Step 3
-- [ ] Step 4
-- [ ] Step 5
-- [ ] Step 6
-- [ ] Step 7
+## Development Roadmap:
+- [x] Initial setup and project structure
+- [x] Implement basic city search
+- [x] Display city weather data
+- [x] Develop comparative analysis feature
+- [ ] Introduce simple or detailed view mode
+- [ ] 
+- [ ] 
+- [ ] 
+- [ ] Mobile ?
+- [ ] Multi-language Support ?
+
+
+## Picture examples/collection ?
+...
+
+## Contact ? 
+...

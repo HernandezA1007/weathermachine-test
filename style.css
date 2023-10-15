@@ -1,85 +1,125 @@
 
-.projectTitle{
-    text-align: center;
-    font-size: 30px;
-    font-weight: bold;
-    padding-top: 20px;
-    padding-bottom: 20px;
-}
-
-.projectDescription{
-    text-align: center;
-    font-size: 17px;
-}
-
-#wrapper
-{
-	height: 100%;
-	min-height: 120vh;
-	width: 100%;
-	background-image: linear-gradient(white, rgb(118, 214, 255));
-}
-
-body{
-    background-color: rgb(118, 214, 255);
-}
-.city{
-    border-width: 10px;
-    border-color: (12,12,12)
-}
-.search{
-    width: 25px;
-    border-width: 1px;
-    margin-left: auto;
-    margin-right: auto;
-}
-.rainButton{
-    width: 25px;
-    border-width: 1px;
-}
-.windButton{
-    width: 25px;
-    border-width: 1px;
-}
-.humidityButton{
-    width: 25px;
-}
-.city{
-    float:left;
-    border-width: 1px;
-}
-.wind{
-    float:left;
-    border-width: 1px;
-}
-.humidity{
-    float:left;
-    border-width: 1px;
-}
-
 .LocationTile{
-    border-style: groove;
-    border-width: 4px;
-    border-color: cornflowerblue;
-    background-image: linear-gradient(lightblue, rgb(72, 130, 154));
-    float: center;
-    margin-top: 10px;
-}
+    width: 200px;
+    display: inline-block;
+    }
+    
+    .projectTitle{
+        text-align: center;
+        font-size: 30px;
+        font-weight: bold;
+        padding-top: 20px;
+        padding-bottom: 20px;
+    }
+    
+    .projectDescription{
+        text-align: center;
+        font-size: 17px;
+    }
+    
+    #wrapper
+    {
+        height: 100%;
+        min-height: 120vh;
+        width: 100%;
+        background-image: linear-gradient(white, rgb(118, 214, 255));
+    }
+    
+    body{
+        background-color: rgb(118, 214, 255);
+    }
+    .city{
+        border-width: 10px;
+        border-color: (12,12,12)
+    }
+    
+    .search{
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-right: 575px;
+    }
+    
+    input[type="text"] {
+        flex: 1;
+        width: 200px;
+        padding: 10px;
+        margin-left: 575px;
+    }
+    
+    .searchButton{
+        width: 30px;
+        height: 30px;
+    }
+    
+    .clear-er{
+        display: block;
+        margin: 0 auto;
+        margin-top: 5px;
+    }
+    
+    .rainButton{
+        width: 25px;
+        border-width: 1px;
+    }
+    .windButton{
+        width: 25px;
+        border-width: 1px;
+    }
+    .humidityButton{
+        width: 25px;
+    }
+    .city{
+        float:left;
+        border-width: 1px;
+    }
+    .wind{
+        float:left;
+        border-width: 1px;
+    }
+    .humidity{
+        float:left;
+        border-width: 1px;
+    }
+    
+    .LocationTile{
+        border-style: groove;
+        border-width: 4px;
+        border-color: cornflowerblue;
+        background-image: linear-gradient(lightblue, rgb(72, 130, 154));
+        float: center;
+        margin-top: 10px;
+    }
+    
+    .attribute{
+        border-style: solid;
+        border-width: 1px;
+        border-color: black;
+        padding-top: 0px;
+        padding-bottom: 0px;
+        margin-top: 0px;
+        margin-bottom: 0px;
+        font-weight: bold;
+        max-width: 200px;
+        margin: 0 auto;
+    }
+    
+    #queue{
+        border-style:solid;
+        border-color:silver;
+        border-width: 5px;
+    }
+    .error-message{
+        text-align: center;
+        margin: -2px, -2px, -2px, -2px;
+        padding: 0px, 0px, 0px, 0px
+    }
 
-.attribute{
-    border-style: solid;
-    border-width: 1px;
-    border-color: black;
-    padding-top: 0px;
-    padding-bottom: 0px;
-    margin-top: 0px;
-    margin-bottom: 0px;
-    font-weight: bold;
-    text-align:center;
-}
 
-#queue{
-    border-style:solid;
-    border-color:silver;
-    border-width: 5px;
-}
+    /* .clear-er {
+        transition: 0.3s ease-in-out;
+    }
+
+    .clear-er:hover {
+        transform: scale(1.1);
+    } */

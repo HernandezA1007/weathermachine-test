@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,23 +8,30 @@
     <link rel="stylesheet" href="style.css">
     <script src="fetchWeather.js" defer></script>
 </head>
-<div id="wrapper">
-    
-<header>
-<div class="projectTitle">Weather Machine</div>
-<div class="projectDescription">A little info on what the site does/what it is used for.</div>
-</header>
+
 
 <body>
-    <div class="card">
-        <button class = "clear-er">Cast them into the fire</button>
-        <div class ="search">
-            <input type="text" placeholder="Please select a city"
-            spellcheck="false">
-            <button><img class = "searchButton" src="./images/search.png"></button>
+    <header>
+        <div class="projectTitle">Weather Machine</div>
+        <div class="projectDescription">Project description...</div>
+    </header>
+
+
+    <div id="wrapper">
+        <div class="card">
+            <div id = "filter">
+                <button class = "filter-er">Filter Results</button>
+            </div>
+
+            <div class ="search">
+                <input type="text" placeholder="Please select a city"
+                spellcheck="false">
+                <button><img class = "searchButton" src="./images/search.png"></button>
+            </div>
+            <p class ="error-message">None</p>
+            <button class = "clear-er">Cast them into the fire</button>
+            <div id = "queue"></div>
         </div>
-        <div id = "queue"></div>
     </div>
-</div>
 </body>
 </html>
