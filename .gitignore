@@ -3,3 +3,7 @@
 
 # Node stuff
 /node_modules
+
+# Serverless functions
+/netlify
+/netlify/functions
