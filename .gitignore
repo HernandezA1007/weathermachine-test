@@ -1,8 +1,10 @@
 # Local Netlify folder
 .netlify
 
+
 # Node stuff
 /node_modules
+
 
 # Serverless functions
 /netlify

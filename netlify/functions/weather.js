@@ -1,5 +1,6 @@
 const fetch = require('node-fetch');
 
+
 const API_KEY = "03ee7347933d49ac83945128231409";
 // API_URL OR API_KEY? http://api.weatherapi.com/v1/current.json?key=03ee7347933d49ac83945128231409&q=
 const BASE_URL = "http://api.weatherapi.com/v1/current.json";
